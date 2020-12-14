@@ -1,0 +1,64 @@
+<%@ page language="java"   contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+    <%@ page import="com.libra.model.User" %>
+  
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<h1 class="heading">${msg}</h1> 
+<%  HttpSession s=request.getSession(false); 
+ Object student=s.getAttribute("student");
+%>
+<h2>Name=${student.fullName}</h2>
+<h2>Registratin_no=${student.fullName}</h2>
+<h2>Year=${student.year}</h2>
+<h2>Branch=${student.branch}</h2>
+<h2>book1=${student.book1}</h2>
+<h2>book2=${student.book2}</h2>
+<h2>book3=${student.book3}</h2>
+<img src="${ path}">
+<script>
+	function checking()
+	{
+		var pwd=document.getElementById("pwd").value;
+		var cpwd=document.getElementById("cpwd").value;
+		alert("in checking");
+		if(pwd==cpwd)
+			return true;
+		else
+			{
+			alert("invalid details");
+			return false;
+			}
+	}
+</script>
+<form action="studentLogout">
+<button  type="submit">logout</button>
+</form>
+<form action="passwordChange" onSubmit=" return checking()" >
+<div class="wrap-input100 validate-input" data-validate = "Password is required">
+						<span class="label-input100">old Password</span>
+						<input  type="password" name="password" placeholder="enter new password" >
+						<span class="focus-input100"></span>
+					</div>
+
+<div class="wrap-input100 validate-input" data-validate = "Password is required">
+						<span class="label-input100">new Password</span>
+						<input  type="password" name="newPassword" placeholder="enter new password" id="pwd">
+						<span class="focus-input100"></span>
+					</div>
+
+					<div class="wrap-input100 validate-input" data-validate = "Repeat new Password is required">
+						<span class="label-input100">confirm new Password</span>
+						<input type="password" placeholder="confirm password" id="cpwd">
+						<span class="focus-input100"></span>
+					</div>
+<button  type="submit">change password</button>
+</form>
+</body>
+</html>
